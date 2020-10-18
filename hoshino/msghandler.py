@@ -1,4 +1,4 @@
-from hoshino import CanceledException, message_preprocessor, trigger
+from hoshino import  message_preprocessor, trigger#CanceledException,
 from hoshino.typing import CQEvent
 
 
@@ -26,9 +26,10 @@ async def handle_message(bot, event: CQEvent, _):
 
     try:
         await sf.func(bot, event)
-    except CanceledException:
-        raise
+    #except CanceledException:
+    #    raise
     except Exception as e:
         sf.sv.logger.error(f'{type(e)} occured when {sf.__name__} handling message {event.message_id}.')
         sf.sv.logger.exception(e)
-    raise CanceledException(f'Handled by {trigger_name} of Hoshino')
+        print(f'Handled by {trigger_name} of Hoshino')
+    #raise CanceledException(f'Handled by {trigger_name} of Hoshino')

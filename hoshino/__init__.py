@@ -3,12 +3,10 @@ import os
 import aiocqhttp
 import nonebot
 from nonebot import Message, MessageSegment, message_preprocessor
-from nonebot.message import CanceledException
+#from nonebot.message import CanceledException
 
 from .log import new_logger
 from . import config
-
-__version__ = '2.1.0'
 
 _bot = None
 HoshinoBot = nonebot.NoneBot
@@ -38,7 +36,9 @@ def init() -> HoshinoBot:
 async def _finish(event, message, **kwargs):
     if message:
         await _bot.send(event, message, **kwargs)
-    raise CanceledException('ServiceFunc of HoshinoBot finished.')
+    else:
+        print('ServiceFunc of HoshinoBot finished.')
+    #raise CanceledException('ServiceFunc of HoshinoBot finished.')
 
 
 def get_bot() -> HoshinoBot:
